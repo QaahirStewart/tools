@@ -4,7 +4,7 @@ export default eventHandler(async (event) => {
   try {
     const client = await serverSupabaseClient(event);
 
-    const { data: polls, pollsDataError } = await client
+    const { data: polls, error: pollsDataError } = await client
       .from("polls")
       .select("*")
       .order("created_at");

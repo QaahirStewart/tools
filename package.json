@@ -12,6 +12,8 @@
     "lint:fix": "eslint --fix ."
   },
   "dependencies": {
+    "@iconify-json/fa6-solid": "^1.2.3",
+    "@iconify-json/ic": "^1.2.2",
     "@iconify-json/lucide": "^1.2.29",
     "@iconify-json/simple-icons": "^1.2.28",
     "@nuxt/ui": "^3.0.0",

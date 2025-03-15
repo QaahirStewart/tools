@@ -2,6 +2,7 @@
 
 import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalized/date'
 
+
 const df = new DateFormatter('en-US', {
     dateStyle: 'medium'
 })
@@ -15,16 +16,19 @@ const question = ref("");
 const description = ref("");
 const createdBy = ref(""); // Example: You can set this to the current user's ID or name
 const validationMessage = ref("");
+const limitMessage = ref("Maximum of 4 options reached");
+const displayLimitMessage = ref(false);
 const showPollOptions = ref(false);
 const options = ref(["", ""]);
-const startDate = ref('');
-const endDate = ref('');
 
 function addOption() {
     if (options.value.length < 4) {
         options.value.push("");
     } else {
-        console.log("Maximum of 4 options reached");
+        displayLimitMessage.value = true;
+        setTimeout(() => {
+            displayLimitMessage.value = false;
+        }, 3000);
     }
 }
 
@@ -32,7 +36,9 @@ const createPollAndOptions = async () => {
     const validOptions = options.value.filter((option) => option.trim() !== "");
     if (question.value.trim() === "" || validOptions.length < 2) {
         validationMessage.value = "A Question and at least two options are required.";
-        console.log("Question and at least two options are required.");
+        setTimeout(() => {
+            validationMessage.value = "";
+        }, 3000);
         return;
     }
     try {
@@ -94,6 +100,10 @@ const formatedEndDate = computed(() => {
             class="h-12 my-4 bg-red-600 rounded-lg font-bold text-white flex items-center justify-center">
             {{ validationMessage }}
         </div>
+        <div v-if="displayLimitMessage"
+            class="h-12 my-4 bg-red-600 rounded-lg font-bold text-white flex items-center justify-center">
+            {{ limitMessage }}
+        </div>
         <div class="mb-4">
             <label for="question" class="block mb-2">Question:</label>
             <input v-model="question" type="text" id="question" class="border px-2 h-12 w-full rounded-lg"
@@ -136,7 +146,7 @@ const formatedEndDate = computed(() => {
                         </UButton>
 
                         <template #content>
-                            <UCalendar v-model="startDateValue" class="p-2" />
+                            <UCalendar v-model="startDateValue" color="secondary" class="p-2" />
                         </template>
                     </UPopover>
                     <UPopover>
@@ -146,7 +156,7 @@ const formatedEndDate = computed(() => {
                         </UButton>
 
                         <template #content>
-                            <UCalendar v-model="endDateValue" class="p-2" />
+                            <UCalendar v-model="endDateValue" color="secondary" class="p-2" />
                         </template>
                     </UPopover>
                 </div>

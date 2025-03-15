@@ -41,11 +41,15 @@ const { data: recentPolls } = useFetch("/api/polls", {
         <div class="mt-4">
             <h2 class="text-3xl font-bold">Recent</h2>
             <div class="mt-4">
-                <div class="bg-gray-100 py-8 px-3 rounded-lg flex justify-between items-center">
-                    <div class="mx-4 space-y-2 w-full">
+                <div class="bg-gray-100 p-4 rounded-xl flex justify-between items-center">
+                    <div class=" space-y-2 w-full">
                         <div v-for="(poll, index) in recentPolls" :key="index"
-                            class="flex justify-between items-center bg-black/5 hover:bg-black/15 py-4 pr-2 pl-6 rounded-lg">
-                            <p class="font-bold text-lg ">{{ poll.question }}</p>
+                            class="flex justify-between items-center bg-black/5 hover:bg-black/10 py-4 pr-2 pl-6 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <UIcon name="fa6-solid:envelope-open-text" class="size-6" />
+                                <p class="font-bold text-lg ">{{ poll.question }}</p>
+                            </div>
+
                             <div class="w-20">
                                 <NuxtLink :to="`/poll/${poll.id}`"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Vote
