@@ -6,16 +6,19 @@ const df = new DateFormatter('en-US', {
     dateStyle: 'medium'
 })
 
-const modelValue = shallowRef(null)
+const startDateValue = shallowRef(null)
+const endDateValue = shallowRef(null)
 
 const supabase = useSupabaseClient();
 
 const question = ref("");
+const description = ref("");
+const createdBy = ref(""); // Example: You can set this to the current user's ID or name
 const validationMessage = ref("");
 const showPollOptions = ref(false);
-
-// Initialize options with a default number of options, e.g., 2 options
 const options = ref(["", ""]);
+const startDate = ref('');
+const endDate = ref('');
 
 function addOption() {
     if (options.value.length < 4) {
@@ -26,60 +29,53 @@ function addOption() {
 }
 
 const createPollAndOptions = async () => {
-    // Check if the question is not empty and there are at least two non-empty options
     const validOptions = options.value.filter((option) => option.trim() !== "");
     if (question.value.trim() === "" || validOptions.length < 2) {
-        validationMessage.value =
-            "A Question and at least two options are required.";
+        validationMessage.value = "A Question and at least two options are required.";
         console.log("Question and at least two options are required.");
-        return; // Exit the function if the condition is not met
+        return;
     }
     try {
-        // Create the poll and get its ID
-        const { error: pollError } = await supabase.from("polls").insert([
+        const { data: poll, error: pollError } = await supabase.from("polls").insert([
             {
                 question: question.value,
-                options: validOptions, // Use only valid (non-empty) options
+                description: description.value,
+                created_by: createdBy.value,
+                start_date: startDateValue.value ? startDateValue.value.toDate(getLocalTimeZone()).toISOString() : null,
+                end_date: endDateValue.value ? endDateValue.value.toDate(getLocalTimeZone()).toISOString() : null,
+                vote_count: 0, // Initialize vote count to 0
             },
-        ]);
+        ]).select().single();
         if (pollError) throw pollError;
-        // Navigate to /polls if the poll was created successfully
+
+        const pollId = poll.id;
+        const optionsData = validOptions.map(option => ({
+            poll_id: pollId,
+            option_text: option,
+        }));
+
+        const { error: optionsError } = await supabase.from("options").insert(optionsData);
+        if (optionsError) throw optionsError;
+
         navigateTo("/polls");
     } catch (error) {
         console.log(error);
-        return null; // Return null in case of an error.
+        return null;
     }
 };
 
-const startDate = ref('');
-const endDate = ref('');
-
-
-
 const formatedStartdDate = computed(() => {
-    if (startDate.value) {
-
-        const date = new Date(startDate.value);
-        // Format the date as "Month day, year"
-        return date.toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-        });
+    if (startDateValue.value) {
+        const date = startDateValue.value.toDate(getLocalTimeZone());
+        return df.format(date);
     }
     return "No Date Available";
 });
 
 const formatedEndDate = computed(() => {
-    if (endDate.value) {
-
-        const date = new Date(endDate.value);
-        // Format the date as "Month day, year"
-        return date.toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-        });
+    if (endDateValue.value) {
+        const date = endDateValue.value.toDate(getLocalTimeZone());
+        return df.format(date);
     }
     return "No Date Available";
 });
@@ -91,7 +87,7 @@ const formatedEndDate = computed(() => {
         <div class="my-12">
             <NuxtLink to="/polls" class="flex my-4 sm:items-end items-center  space-x-5">
                 <Icon name="fa6-solid:square-plus" size="60" />
-                <h1 class="sm:text-7xl text-5xl font-bold text-center">Create Poll</h1>
+                <h1 class="sm:text-6xl text-5xl font-bold text-center">Create Poll</h1>
             </NuxtLink>
         </div>
         <div v-if="validationMessage"
@@ -124,62 +120,33 @@ const formatedEndDate = computed(() => {
             </div>
         </div>
 
-        <div v-if="showPollOptions" class="bg-slate-100 w-full p-8 my-8 rounded-xl">
-            <div class="flex space-x-4 justify-between items-center">
-                <button class="flex items-center bg-blue-500 font-bold px-4 rounded space-x-2 text-white h-12">
+        <div v-if="showPollOptions" class="bg-slate-100 w-full p-4 my-8 rounded-xl">
+            <div
+                class="flex md:flex-row flex-col md:space-x-4 md:space-y-0 space-y-4 md:justify-between md:items-center">
+                <button
+                    class="flex items-center bg-blue-500 font-bold px-4 rounded space-x-2 text-white h-12 text-center justify-center">
                     <Icon name="fa6-solid:clock" color="white" size="20" />
                     <p>Schedule</p>
                 </button>
-                <div class="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-4">
-                    <!-- <div class="flex items-center space-x-2">
-                        <Popover>
-                            <PopoverTrigger as-child>
-                                <Button class="bg-black/5 text-black hover:bg-black/10 space-x-2 h-12">
-                                    <Icon name="fa6-solid:calendar" size="20" />
-                                    <p>Start</p>
-                                    <p v-if="startDate"> : {{ formatedStartdDate }}</p>
-
-                                </Button>
-                            </PopoverTrigger>
-                            <PopoverContent class="w-auto p-0">
-                                <Calendar v-model="startDate" initial-focus />
-                            </PopoverContent>
-                        </Popover>
-                    </div> -->
-
-                    <!-- <div class="flex items-center space-x-2 ">
-                        <Popover>
-                            <PopoverTrigger as-child>
-                                <Button class="bg-black/5 text-black hover:bg-black/10 space-x-2 h-12 w-full">
-                                    <Icon name="fa6-solid:calendar" size="20" />
-                                    <p>End</p>
-                                    <p v-if="endDate"> : {{ formatedEndDate }}</p>
-
-                                </Button>
-                            </PopoverTrigger>
-                            <PopoverContent class="w-auto p-0">
-                                <Calendar v-model="endDate" initial-focus />
-                            </PopoverContent>
-                        </Popover>
-                    </div> -->
+                <div class="flex w-full space-x-4 ">
                     <UPopover>
                         <UButton color="neutral" variant="soft" icon="fa6-solid:calendar"
-                            class="font-bold bg-black/5 h-12">
-                            {{ modelValue ? 'Start: ' + df.format(modelValue.toDate(getLocalTimeZone())) : 'Start' }}
+                            class="font-bold bg-black/5 h-12 flex-1">
+                            {{ startDateValue ? 'Start: ' + formatedStartdDate : 'Start' }}
                         </UButton>
 
                         <template #content>
-                            <UCalendar v-model="modelValue" class="p-2" />
+                            <UCalendar v-model="startDateValue" class="p-2" />
                         </template>
                     </UPopover>
                     <UPopover>
                         <UButton color="neutral" variant="soft" icon="fa6-solid:calendar"
-                            class="font-bold bg-black/5 h-12">
-                            {{ modelValue ? 'End: ' + df.format(modelValue.toDate(getLocalTimeZone())) : 'End' }}
+                            class="font-bold bg-black/5 h-12 flex-1">
+                            {{ endDateValue ? 'End: ' + formatedEndDate : 'End' }}
                         </UButton>
 
                         <template #content>
-                            <UCalendar v-model="modelValue" class="p-2" />
+                            <UCalendar v-model="endDateValue" class="p-2" />
                         </template>
                     </UPopover>
                 </div>
@@ -194,7 +161,6 @@ const formatedEndDate = computed(() => {
                 Create Poll
             </button>
         </div>
-
 
     </div>
 </template>
