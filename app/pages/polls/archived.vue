@@ -8,7 +8,7 @@ const polls = ref([]);
 const filterMonth = ref('');
 const filterYear = ref('');
 const searchQuery = ref('');
-const showFilters = ref(false);
+
 
 const fetchPolls = async () => {
     const { data, error } = await supabase
@@ -21,6 +21,22 @@ const fetchPolls = async () => {
     } else {
         polls.value = data;
     }
+};
+
+const showFilters = ref(false);
+
+// toggle filters if already shows hide and clear filters
+const toggleFilters = () => {
+    showFilters.value = !showFilters.value;
+    if (!showFilters.value) {
+        clearFilters();
+    }
+};
+
+const clearFilters = () => {
+    filterMonth.value = '';
+    filterYear.value = '';
+    searchQuery.value = '';
 };
 
 const filteredPolls = computed(() => {
@@ -73,71 +89,61 @@ const years = Array.from({ length: 10 }, (_, i) => {
 </script>
 
 <template>
-    <div class="container max-w-2xl mx-auto p-4 h-screen">
-        <div class="flex justify-start max-h-180 flex-col px-4 my-12">
-            <NuxtLink to="/polls" class="flex my-4 items-end space-x-5">
-                <Icon name="fa6-solid:square-poll-vertical" size="60" />
-                <h1 class="text-6xl font-bold text-center">Archived</h1>
-            </NuxtLink>
-            <div class="flex flex-col  w-full space-y-4 mx-auto overflow-auto">
+    <div class="bg-black">
+        <div class="container max-w-2xl mx-auto p-4 h-screen ">
+            <div class="flex justify-start max-h-180 flex-col px-4 my-12">
+                <NuxtLink to="/polls" class="flex my-4 items-end space-x-5">
+                    <Icon name="fa6-solid:square-poll-vertical" size="60" class="text-white" />
+                    <h1 class="text-6xl font-bold text-center text-white">Archived</h1>
+                </NuxtLink>
+                <div class="flex flex-col  w-full space-y-4 mx-auto overflow-auto">
+                    <div v-for="(polls, month) in groupedPolls" :key="month" class="w-full mb-4">
+                        <h2 class="text-2xl font-semibold mb-2 text-white">{{ month }}</h2>
+                        <div class="w-full bg-white/5 p-8 rounded-lg">
+                            <div v-for="poll in polls" :key="poll.id"
+                                class="w-full bg-white/5 hover:bg-white/10 rounded-lg  py-2 px-6 mb-2">
+                                <NuxtLink :to="`/poll/${poll.id}`" class="flex justify-between items-center text-white">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex flex-col">
+                                            <h3 class="text-lg font-bold">{{ poll.question }}</h3>
+                                            <p class="text-xs">{{ new Date(poll.created_at).toLocaleDateString("en-US",
+                                                {
+                                                    month: "long", day: "numeric",
+                                                    year: "numeric"
+                                                }) }}</p>
+                                        </div>
 
-
-                <div v-for="(polls, month) in groupedPolls" :key="month" class="w-full mb-4">
-                    <h2 class="text-2xl font-semibold mb-2">{{ month }}</h2>
-                    <div class="w-full bg-gray-100 p-8 rounded-lg">
-                        <div v-for="poll in polls" :key="poll.id"
-                            class="w-full bg-black/5 hover:bg-black/10 rounded-lg p-4 mb-2">
-                            <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-bold">{{ poll.question }}</h3>
-                                <p>{{ new Date(poll.created_at).toLocaleDateString("en-US", {
-                                    month: "long", day: "numeric",
-                                    year: "numeric"
-                                }) }}</p>
+                                    </div>
+                                    <UIcon name="fa6-solid:envelope-open-text" class="size-6" />
+                                </NuxtLink>
+                                <p>{{ poll.description }}</p>
                             </div>
-                            <p>{{ poll.description }}</p>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
-
-        </div>
-        <div class="flex justify-center items-center mt-4 w-full space-x-2 px-4">
-            <div class="flex justify-between items-center h-12 flex-1 space-x-2">
-                <div class="bg-blue-500 size-12 aspect-square flex items-center justify-center rounded-lg">
-                    <UIcon name="fa6-solid:magnifying-glass" class="text-white" size="20" />
-                </div>
-
-                <input v-model="searchQuery" type="text" placeholder="Search by question"
-                    class="w-full h-12 p-4 bg-black/5 rounded-lg" />
-            </div>
-            <button @click="showFilters = !showFilters"
-                class="p-2 w-28 h-12 text-white rounded-lg bg-black transition-colors">
-                {{ showFilters ? 'Hide Filters' : 'Show Filters' }}
-            </button>
-        </div>
-
-        <div class="px-4">
-            <div v-if="showFilters" class="bg-slate-100 w-full p-4 my-4 rounded-xl">
-                <div class="flex justify-between items-center h-12 ">
-                    <button @click="filterMonth = ''; filterYear = ''; searchQuery = ''"
-                        class="mr-4 py-2 px-4 h-full bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex-none">
-                        Clear
+            <div class="px-4">
+                <div
+                    class="flex justify-center items-center mt-4  space-x-2 px-4 bg-white/5 w-full p-4 my-4 rounded-xl">
+                    <div class="flex justify-between items-center h-12 flex-1 space-x-2">
+                        <input v-model="searchQuery" type="text" placeholder="Search by question"
+                            class="w-full h-12 p-4 bg-white/10  text-white rounded-lg" />
+                    </div>
+                    <button @click="toggleFilters"
+                        class="p-2 w-28 h-12 text-white rounded-lg bg-white/5 font-bold transition-colors">
+                        {{ showFilters ? 'Hide Filters' : 'Show Filters' }}
                     </button>
-                    <USelect v-model="filterMonth" :items="months" placeholder="Month"
-                        class="w-1/2 mr-2 h-full rounded-lg" />
-                    <USelect v-model="filterYear" :items="years" placeholder="Year"
-                        class="w-1/2 ml-2 h-full rounded-lg" />
                 </div>
-
+                <div v-if="showFilters" class="bg-slate-100 w-full p-4 my-4 rounded-xl">
+                    <div class="flex justify-between items-center h-12 space-x-2 ">
+                        <USelect v-model="filterMonth" :items="months" placeholder="Month"
+                            class="w-1/2  h-full rounded-lg" />
+                        <USelect v-model="filterYear" :items="years" placeholder="Year"
+                            class="w-1/2  h-full rounded-lg" />
+                    </div>
+                </div>
             </div>
         </div>
-
-
     </div>
 </template>
 
