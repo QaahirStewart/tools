@@ -126,11 +126,16 @@ const topViewingPlatform = computed(() => {
     }, {});
     return Object.entries(platformCounts).reduce((a, b) => (a[1] > b[1] ? a : b), ['', 0])[0];
 });
+
+const topViewingPlatformIcon = computed(() => {
+    const platform = platforms.find(p => p.name === topViewingPlatform.value);
+    return platform ? platform.icon : '';
+});
 </script>
 
 <template>
     <div class="container mx-auto overflow-auto">
-        <div class="flex justify-evenly h-screen flex-col ">
+        <div class="flex justify-evenly h-screen flex-col px-4 ">
 
             <!-- Poll Section -->
             <div class="flex flex-col max-w-xl w-full space-y-4 mx-auto">
@@ -201,7 +206,7 @@ const topViewingPlatform = computed(() => {
                             </div>
 
                             <div class="flex items-center space-x-4 h-14 px-4 bg-black/5 rounded-lg">
-                                <Icon :name="topViewingPlatform" size="24"
+                                <Icon :name="topViewingPlatformIcon" size="24"
                                     :class="{ rumbleIconColor: topViewingPlatform === 'Rumble' }" />
 
                                 <p class="font-bold">Top Viewing Platform</p>
@@ -211,7 +216,7 @@ const topViewingPlatform = computed(() => {
                 </div>
             </div>
 
-            {{ selectedOption }}
+
         </div>
     </div>
 </template>

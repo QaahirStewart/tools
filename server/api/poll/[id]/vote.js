@@ -23,20 +23,19 @@ export default eventHandler(async (event) => {
     }
 
     // Update the vote count in the polls table
-    const { data: poll, error: pollError } = await client
-      .from("polls")
-      .update({ vote_count: client.raw("vote_count + 1") })
-      .eq("id", pollId)
-      .single();
+    // const { data: poll, error: pollError } = await client
+    //   .from("polls")
+    //   .update({ vote_count: client.raw("vote_count + 1") })
+    //   .eq("id", pollId)
+    //   .single();
 
-    if (pollError) {
-      throw pollError;
-    }
+    // if (pollError) {
+    //   throw pollError;
+    // }
 
     return {
       success: true,
       vote,
-      poll,
     };
   } catch (error) {
     console.error("Error submitting vote:", error.message);

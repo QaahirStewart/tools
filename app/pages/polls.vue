@@ -18,7 +18,7 @@ const { data: recentPolls } = useFetch("/api/polls", {
         <div class="my-12">
             <NuxtLink to="/polls" class="flex my-4 items-end space-x-5">
                 <Icon name="fa6-solid:square-poll-vertical" size="60" />
-                <h1 class="text-7xl font-bold text-center">Polls</h1>
+                <h1 class="text-6xl font-bold text-center">Polls</h1>
             </NuxtLink>
         </div>
 
