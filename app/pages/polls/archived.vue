@@ -126,11 +126,11 @@ const years = Array.from({ length: 10 }, (_, i) => {
                 <div class="flex justify-between items-center h-12 ">
                     <button @click="filterMonth = ''; filterYear = ''; searchQuery = ''"
                         class="mr-4 py-2 px-4 h-full bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex-none">
-                        Clear Filter
+                        Clear
                     </button>
-                    <USelect v-model="filterMonth" :items="months" placeholder="Select Month"
+                    <USelect v-model="filterMonth" :items="months" placeholder="Month"
                         class="w-1/2 mr-2 h-full rounded-lg" />
-                    <USelect v-model="filterYear" :items="years" placeholder="Select Year"
+                    <USelect v-model="filterYear" :items="years" placeholder="Year"
                         class="w-1/2 ml-2 h-full rounded-lg" />
                 </div>
 
