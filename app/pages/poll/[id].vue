@@ -1,11 +1,81 @@
 <script setup>
+import { RealtimeChannel } from "@supabase/supabase-js";
+
+const supabase = useSupabaseClient();
+
+let realtimeChannel = RealtimeChannel;
 
 const route = useRoute();
 const pollId = route.params.id;
 
-const poll = ref(null);
-const options = ref([]);
-const votes = ref([]);
+onMounted(() => {
+    realtimeChannel = supabase
+        .channel("public:polls")
+        .on(
+            "postgres_changes",
+            { event: "*", schema: "public", table: "polls" },
+            () => refreshPoll()
+        );
+    realtimeChannel.subscribe();
+});
+
+onMounted(() => {
+    realtimeChannel = supabase
+        .channel("public:options")
+        .on(
+            "postgres_changes",
+            { event: "*", schema: "public", table: "options" },
+            () => refreshOptions()
+        );
+    realtimeChannel.subscribe();
+});
+
+onMounted(() => {
+    realtimeChannel = supabase
+        .channel("public:poll_votes")
+        .on(
+            "postgres_changes",
+            { event: "*", schema: "public", table: "poll_votes" },
+            () => refreshVotes()
+        );
+    realtimeChannel.subscribe();
+});
+
+const { data: poll, refresh: refreshPoll } = await useAsyncData(
+    "poll",
+    async () => {
+        const { data } = await supabase
+            .from("polls")
+            .select("*")
+            .eq("id", pollId)
+        return data;
+    }
+);
+
+const { data: options, refresh: refreshOptions } = await useAsyncData(
+    "options",
+    async () => {
+        const { data } = await supabase
+            .from("options")
+            .select("*")
+            .eq("poll_id", pollId);
+        return data;
+    }
+);
+
+const { data: votes, refresh: refreshVotes } = await useAsyncData(
+    "votes",
+    async () => {
+        const { data } = await supabase
+            .from("poll_votes")
+            .select("*")
+            .eq("poll_id", pollId);
+        return data;
+    }
+);
+
+
+// const poll = ref(null);
 const validationMessage = ref("");
 const selectedOption = ref(null);
 const selectedPlatform = ref(null);
@@ -22,27 +92,13 @@ const isVoteEnabled = computed(
     () => selectedOption.value !== null && selectedPlatform.value !== null
 );
 
-const fetchPollData = async () => {
-    try {
-        const response = await fetch(`/api/poll/${pollId}`);
-        const data = await response.json();
-        if (data.error) {
-            validationMessage.value = data.error;
-        } else {
-            poll.value = data.poll;
-            options.value = data.options;
-            votes.value = data.votes;
-        }
-    } catch (error) {
-        validationMessage.value = "Error fetching poll data.";
-    }
-};
-
-onMounted(fetchPollData);
-
-const totalVotes = computed(() => votes.value.length);
+const totalVotes = computed(() => (votes.value ? votes.value.length : 0));
 
 const voteData = computed(() => {
+    if (!votes.value) {
+        return [];
+    }
+
     const groupedVotes = votes.value.reduce((acc, vote) => {
         if (acc[vote.option_id]) {
             acc[vote.option_id]++;
@@ -95,10 +151,10 @@ const submitVote = async () => {
     }
 };
 
-const pollQuestion = computed(() => poll.value ? poll.value.question : "");
+const pollQuestion = computed(() => poll.value && poll.value.length > 0 ? poll.value[0].question : "");
 const pollDate = computed(() => {
-    if (poll.value && poll.value.created_at) {
-        const date = new Date(poll.value.created_at);
+    if (poll.value && poll.value.length > 0 && poll.value[0].created_at) {
+        const date = new Date(poll.value[0].created_at);
         return date.toLocaleDateString("en-US", {
             month: "long",
             day: "numeric",
@@ -136,12 +192,11 @@ const topViewingPlatformIcon = computed(() => {
 <template>
     <div class="container mx-auto overflow-auto">
         <div class="flex justify-evenly h-screen flex-col px-4 ">
-
             <!-- Poll Section -->
             <div class="flex flex-col max-w-xl w-full space-y-4 mx-auto">
                 <NuxtLink to="/polls" class="flex my-4 items-end space-x-5">
                     <Icon name="fa6-solid:square-poll-vertical" size="60" />
-                    <h1 class="text-6xl font-bold text-center">Poll{{ }}</h1>
+                    <h1 class="text-6xl font-bold text-center">Poll</h1>
                 </NuxtLink>
 
                 <div class="flex justify-between">

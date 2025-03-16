@@ -3,7 +3,7 @@
 
 <template>
     <div>
-        <p class="text-5xl font-bold">Tests</p>
+        <p class="text-5xl font-bold hover:bg-blue-500/90">Tests</p>
     </div>
 </template>
 
