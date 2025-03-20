@@ -2,7 +2,6 @@
 
 import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalized/date'
 
-
 const df = new DateFormatter('en-US', {
     dateStyle: 'medium'
 })
@@ -20,6 +19,16 @@ const limitMessage = ref("Maximum of 4 options reached");
 const displayLimitMessage = ref(false);
 const showPollOptions = ref(false);
 const options = ref(["", ""]);
+
+const pollDuration = ref(""); // Stores the selected duration in minutes
+const showDurationOptions = ref(false); // Toggles the duration options section
+const durationOptions = [
+    { label: "5 Minutes", value: 5 },
+    { label: "10 Minutes", value: 10 },
+    { label: "15 Minutes", value: 15 },
+    { label: "30 Minutes", value: 30 },
+    { label: "60 Minutes", value: 60 },
+];
 
 function addOption() {
     if (options.value.length < 4) {
@@ -41,6 +50,14 @@ const createPollAndOptions = async () => {
         }, 3000);
         return;
     }
+
+    const now = new Date();
+    const calculatedEndDate = pollDuration.value
+        ? new Date(now.getTime() + pollDuration.value * 60 * 1000).toISOString()
+        : endDateValue.value
+            ? endDateValue.value.toDate(getLocalTimeZone()).toISOString()
+            : null;
+
     try {
         const { data: poll, error: pollError } = await supabase.from("polls").insert([
             {
@@ -48,8 +65,9 @@ const createPollAndOptions = async () => {
                 description: description.value,
                 created_by: createdBy.value,
                 start_date: startDateValue.value ? startDateValue.value.toDate(getLocalTimeZone()).toISOString() : null,
-                end_date: endDateValue.value ? endDateValue.value.toDate(getLocalTimeZone()).toISOString() : null,
+                end_date: calculatedEndDate,
                 vote_count: 0, // Initialize vote count to 0
+                pinned: false
             },
         ]).select().single();
         if (pollError) throw pollError;
@@ -91,7 +109,7 @@ const formatedEndDate = computed(() => {
 <template>
     <div class="container max-w-2xl mx-auto p-4 h-screen">
         <div class="my-12">
-            <NuxtLink to="/polls" class="flex my-4 sm:items-end items-center  space-x-5">
+            <NuxtLink to="/polls" class="flex my-4 sm:items-end items-center space-x-5">
                 <Icon name="fa6-solid:square-plus" size="60" />
                 <h1 class="sm:text-6xl text-5xl font-bold text-center">Create Poll</h1>
             </NuxtLink>
@@ -121,16 +139,24 @@ const formatedEndDate = computed(() => {
                 <Icon name="fa6-solid:square-plus" size="20" />
                 <P>Add</P>
             </button>
-            <div class="flex items-center space-x-3 h-12">
-
-                <button @click="showPollOptions = !showPollOptions"
-                    class="bg-black text-white px-4 h-12 rounded-lg font-bold">
-                    Poll Options
-                </button>
+            <div class="flex space-x-2">
+                <div class="flex justify-between space-x-4">
+                    <button @click="showDurationOptions = !showDurationOptions"
+                        class="bg-black text-white px-4 h-12 rounded-lg font-bold">
+                        Duration Options
+                    </button>
+                </div>
+                <div class="flex items-center space-x-3 h-12">
+                    <button @click="showPollOptions = !showPollOptions"
+                        class="bg-black text-white px-4 h-12 rounded-lg font-bold">
+                        Poll Options
+                    </button>
+                </div>
             </div>
+
         </div>
 
-        <div v-if="showPollOptions" class="bg-slate-100 w-full p-4 my-8 rounded-xl">
+        <div v-if="showPollOptions" class="bg-slate-100 w-full p-4 my-4 rounded-xl">
             <div
                 class="flex md:flex-row flex-col md:space-x-4 md:space-y-0 space-y-4 md:justify-between md:items-center">
                 <button
@@ -160,10 +186,22 @@ const formatedEndDate = computed(() => {
                         </template>
                     </UPopover>
                 </div>
-
             </div>
-
         </div>
+
+        <div v-if="showDurationOptions" class="bg-slate-100 w-full p-4 my-4 rounded-xl">
+            <div class="flex flex-col space-y-4">
+                <label for="duration" class="block mb-2">Select Duration:</label>
+                <select v-model="pollDuration" id="duration" class="border px-2 h-12 w-full rounded-lg">
+                    <option value="" disabled>Select Duration</option>
+                    <option v-for="option in durationOptions" :key="option.value" :value="option.value">
+                        {{ option.label }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+
 
         <div class="w-full pb-2">
             <button @click="createPollAndOptions"

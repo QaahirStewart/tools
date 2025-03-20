@@ -96,7 +96,7 @@ const years = Array.from({ length: 10 }, (_, i) => {
                     <Icon name="fa6-solid:square-poll-vertical" size="60" class="text-white" />
                     <h1 class="text-6xl font-bold text-center text-white">Archived</h1>
                 </NuxtLink>
-                <div class="flex flex-col  w-full space-y-4 mx-auto overflow-auto">
+                <div class="flex flex-col w-full space-y-4 mx-auto overflow-auto">
                     <div v-for="(polls, month) in groupedPolls" :key="month" class="w-full mb-4">
                         <h2 class="text-2xl font-semibold mb-2 text-white">{{ month }}</h2>
                         <div class="w-full bg-white/5 p-8 rounded-lg">
@@ -134,7 +134,7 @@ const years = Array.from({ length: 10 }, (_, i) => {
                         {{ showFilters ? 'Hide Filters' : 'Show Filters' }}
                     </button>
                 </div>
-                <div v-if="showFilters" class="bg-slate-100 w-full p-4 my-4 rounded-xl">
+                <div v-if="showFilters" class="bg-white/5 w-full p-4 my-4 rounded-xl">
                     <div class="flex justify-between items-center h-12 space-x-2 ">
                         <USelect v-model="filterMonth" :items="months" placeholder="Month"
                             class="w-1/2  h-full rounded-lg" />
