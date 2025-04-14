@@ -473,10 +473,10 @@
     debug "^4.3.1"
     minimatch "^3.1.2"
 
-"@eslint/config-helpers@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@eslint/config-helpers/-/config-helpers-0.1.0.tgz#62f1b7821e9d9ced1b3f512c7ea731825765d1cc"
-  integrity sha512-kLrdPDJE1ckPo94kmPPf9Hfd0DU0Jw6oKYrhe+pwSC0iTUInmTa+w6fw8sGgcfkFJGNdWOUeOaDM4quW4a7OkA==
+"@eslint/config-helpers@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@eslint/config-helpers/-/config-helpers-0.2.0.tgz#12dc8d65c31c4b6c3ebf0758db6601eb7692ce59"
+  integrity sha512-yJLLmLexii32mGrhW29qvU3QBVTu0GUmEf/J4XsBtVhp4JkIUFN/BjWqTF63yRvGApIDpZm5fa97LtYtINmfeQ==
 
 "@eslint/config-inspector@^1.0.2":
   version "1.0.2"
@@ -506,10 +506,10 @@
   dependencies:
     "@types/json-schema" "^7.0.15"
 
-"@eslint/eslintrc@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-3.3.0.tgz#96a558f45842989cca7ea1ecd785ad5491193846"
-  integrity sha512-yaVPAiNAalnCZedKLdR21GOGILMLKPyqSLWaAjQFvYA2i/ciDi8ArYVr69Anohb6cH2Ukhqti4aFnYyPm8wdwQ==
+"@eslint/eslintrc@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-3.3.1.tgz#e55f7f1dd400600dd066dbba349c4c0bac916964"
+  integrity sha512-gtF186CXhIl1p4pJNGZw8Yc6RlshoePRvE0X91oPGb3vZ8pM3qOS9W9NGPat9LziaBV7XrJWGylNQXkGcnM3IQ==
   dependencies:
     ajv "^6.12.4"
     debug "^4.3.2"
@@ -521,7 +521,12 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@eslint/js@9.22.0", "@eslint/js@^9.22.0":
+"@eslint/js@9.23.0":
+  version "9.23.0"
+  resolved "https://registry.yarnpkg.com/@eslint/js/-/js-9.23.0.tgz#c09ded4f3dc63b40b933bcaeb853fceddb64da30"
+  integrity sha512-35MJ8vCPU0ZMxo7zfev2pypqTwWTofFZO6m4KAtdoFhRpLJUpHTZZ+KB3C7Hb1d7bULYwO4lJXGCi5Se+8OMbw==
+
+"@eslint/js@^9.22.0":
   version "9.22.0"
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-9.22.0.tgz#4ff53649ded7cbce90b444b494c234137fa1aa3d"
   integrity sha512-vLFajx9o8d1/oL2ZkpMYbkLv8nDB6yaIwFNt7nI4+I80U/z03SxmfOMsLbvWr3p7C+Wnoh//aOu2pQW8cS0HCQ==
@@ -610,10 +615,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify-json/lucide@^1.2.31":
-  version "1.2.31"
-  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.31.tgz#0ccdbdd9bb75b09f61af9a4f124a71a0ef5469b3"
-  integrity sha512-Z9lkm4FmeydsNVqRK5DPjttjGpBOeSKaTpH0+sYzsWPv3RYGHUTJlQOb8PGe/AW+Sw7Fv3kWBrXaevFAeoDa+w==
+"@iconify-json/lucide@^1.2.32":
+  version "1.2.32"
+  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.32.tgz#d8ff228d3c26f5500ea7519d9b37b505a2875ca9"
+  integrity sha512-M5efeHQJhlT8FkAXjW+xGu5/lHUt5VBSjd/u9XxmQy6RGXLRCRi0PcUBosAuKALRT15j+U8dN4eWiDhDZjTbSw==
   dependencies:
     "@iconify/types" "*"
 
@@ -1022,7 +1027,7 @@
     std-env "^3.8.1"
     tinyglobby "^0.2.12"
 
-"@nuxt/kit@3.16.1":
+"@nuxt/kit@3.16.1", "@nuxt/kit@^3.16.1":
   version "3.16.1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.16.1.tgz#7acc5457b83fc2c7ecb25d728d83899eef4464d4"
   integrity sha512-Perby8hJGUeCWad5oTVXb/Ibvp18ZCUC5PxHHu+acMDmVfnxSo48yqk7qNd09VkTF3LEzoEjNZpmW2ZWN0ry7A==
@@ -1078,7 +1083,7 @@
     unimport "^4.1.2"
     untyped "^2.0.0"
 
-"@nuxt/schema@3.16.1":
+"@nuxt/schema@3.16.1", "@nuxt/schema@^3.16.1":
   version "3.16.1"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.16.1.tgz#685ef851d127d0d5401bd5121b3adf1c3d2723e2"
   integrity sha512-Ri8bmT6MljpVR4DlXf9+acfgGaI4OTEdAzJU5aF2rJS78abtpnBxjXBG65kuhoL1LUlfKppDl8fTkUw5LM2JXQ==
@@ -1116,27 +1121,27 @@
     rc9 "^2.1.2"
     std-env "^3.8.1"
 
-"@nuxt/ui@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/ui/-/ui-3.0.0.tgz#e56c235118f278f463ee7b78f5e58cc757afa69e"
-  integrity sha512-wtuJY6k//U/C7IPvrRxZeoGH18h+BhsXHyLkREPiZa6lVqLNdR1IjmdNFkjHgAEyzdMyPgLTlrEVYazO6InF3g==
+"@nuxt/ui@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/ui/-/ui-3.0.1.tgz#f038f8675bc4831f9ef804ebaeca0a5e574dfcfd"
+  integrity sha512-83p1gKFaH21LY8uggyg0xF3hsyTLAf7fiHVVEhJr8vVhWkb2O3eKI3pLQ6KYJwJtbxgYDOAkyLJBUv2mwmQ+4w==
   dependencies:
     "@iconify/vue" "^4.3.0"
     "@internationalized/date" "^3.7.0"
     "@internationalized/number" "^3.6.0"
     "@nuxt/fonts" "^0.11.0"
     "@nuxt/icon" "^1.11.0"
-    "@nuxt/kit" "^3.16.0"
-    "@nuxt/schema" "^3.16.0"
+    "@nuxt/kit" "^3.16.1"
+    "@nuxt/schema" "^3.16.1"
     "@nuxtjs/color-mode" "^3.5.2"
-    "@tailwindcss/postcss" "^4.0.13"
-    "@tailwindcss/vite" "^4.0.13"
+    "@tailwindcss/postcss" "^4.0.15"
+    "@tailwindcss/vite" "^4.0.15"
     "@tanstack/vue-table" "^8.21.2"
-    "@unhead/vue" "^2.0.0-rc.10"
+    "@unhead/vue" "^2.0.0-rc.13"
     "@vueuse/core" "^13.0.0"
     "@vueuse/integrations" "^13.0.0"
     colortranslator "^4.1.0"
-    consola "^3.4.0"
+    consola "^3.4.2"
     defu "^6.1.4"
     embla-carousel-auto-height "^8.5.2"
     embla-carousel-auto-scroll "^8.5.2"
@@ -1151,15 +1156,15 @@
     mlly "^1.7.4"
     ohash "^2.0.11"
     pathe "^2.0.3"
-    reka-ui "^2.0.2"
+    reka-ui "^2.1.0"
     scule "^1.3.0"
     tailwind-variants "^1.0.0"
-    tailwindcss "^4.0.13"
+    tailwindcss "^4.0.15"
     tinyglobby "^0.2.12"
-    unplugin "^2.2.0"
+    unplugin "^2.2.1"
     unplugin-auto-import "^19.1.1"
     unplugin-vue-components "^28.4.1"
-    vaul-vue "^0.3.0"
+    vaul-vue "^0.4.1"
     vue "^3.5.13"
     vue-router "^4.5.0"
 
@@ -1881,108 +1886,108 @@
   dependencies:
     tslib "^2.8.0"
 
-"@tailwindcss/node@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/node/-/node-4.0.14.tgz#e3a86cd35d96ba02ff78b4d49a690705f3aad81f"
-  integrity sha512-Ux9NbFkKWYE4rfUFz6M5JFLs/GEYP6ysxT8uSyPn6aTbh2K3xDE1zz++eVK4Vwx799fzMF8CID9sdHn4j/Ab8w==
+"@tailwindcss/node@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/node/-/node-4.0.16.tgz#fc236d3aa9747c2239595144ee4a4feb7deaad37"
+  integrity sha512-T6IK79hoCFScxD5tRxWMtwqwSs4sT81Vw+YbzL7RZD0/Ndm4y5kboV7LdQ97YGH6udoOZyVT/uEfrnU2L5Nkog==
   dependencies:
     enhanced-resolve "^5.18.1"
     jiti "^2.4.2"
-    tailwindcss "4.0.14"
+    tailwindcss "4.0.16"
 
-"@tailwindcss/oxide-android-arm64@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-android-arm64/-/oxide-android-arm64-4.0.14.tgz#fe72779aa283114e28fdc97043bb14ca8f33bc07"
-  integrity sha512-VBFKC2rFyfJ5J8lRwjy6ub3rgpY186kAcYgiUr8ArR8BAZzMruyeKJ6mlsD22Zp5ZLcPW/FXMasJiJBx0WsdQg==
+"@tailwindcss/oxide-android-arm64@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-android-arm64/-/oxide-android-arm64-4.0.16.tgz#b653b75dc85c52ae77d19b55bc1b9b849ab685ab"
+  integrity sha512-mieEZrNLHatpQu6ad0pWBnL8ObUE9ZSe4eoX6GKTqsKv98AxNw5lUa5nJM0FgD8rYJeZ2dPtHNN/YM2xY9R+9g==
 
-"@tailwindcss/oxide-darwin-arm64@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.0.14.tgz#8c1d4275f421e415e739ac93607e002d801e78d5"
-  integrity sha512-U3XOwLrefGr2YQZ9DXasDSNWGPZBCh8F62+AExBEDMLDfvLLgI/HDzY8Oq8p/JtqkAY38sWPOaNnRwEGKU5Zmg==
+"@tailwindcss/oxide-darwin-arm64@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.0.16.tgz#eb3f31230dc2d30b4c09155a92d691023ef8b418"
+  integrity sha512-pfilSvgrX5UDdjh09gGVMhAPfZVucm4AnwFBkwBe6WFl7gzMAZ92/35GC0yMDeS+W+RNSXclXJz+HamF1iS/aA==
 
-"@tailwindcss/oxide-darwin-x64@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-darwin-x64/-/oxide-darwin-x64-4.0.14.tgz#e426c2a8e93b0b7ef20a6af8eceda3de8f3b4094"
-  integrity sha512-V5AjFuc3ndWGnOi1d379UsODb0TzAS2DYIP/lwEbfvafUaD2aNZIcbwJtYu2DQqO2+s/XBvDVA+w4yUyaewRwg==
+"@tailwindcss/oxide-darwin-x64@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-darwin-x64/-/oxide-darwin-x64-4.0.16.tgz#1104eec5d7a855f6b574fa5f4b90cfc0104a61de"
+  integrity sha512-Z3lJY3yUjlHbzgXwWH9Y6IGeSGXfwjbXuvTPolyJUGMZl2ZaHdQMPOZ8dMll1knSLjctOif+QijMab0+GSXYLQ==
 
-"@tailwindcss/oxide-freebsd-x64@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-freebsd-x64/-/oxide-freebsd-x64-4.0.14.tgz#becc732dec8d8e8d5c44503206838e3b760604d2"
-  integrity sha512-tXvtxbaZfcPfqBwW3f53lTcyH6EDT+1eT7yabwcfcxTs+8yTPqxsDUhrqe9MrnEzpNkd+R/QAjJapfd4tjWdLg==
+"@tailwindcss/oxide-freebsd-x64@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-freebsd-x64/-/oxide-freebsd-x64-4.0.16.tgz#bbc1b8b1aac71e78da2c3569472170eda7da3a39"
+  integrity sha512-dv2U8Yc7vKIDyiJkUouhjsl+dTfRImNyZRCTFsHvvrhJvenYZBRtE/wDSYlZHR0lWKhIocxk1ScAkAcMR3F3QQ==
 
-"@tailwindcss/oxide-linux-arm-gnueabihf@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-arm-gnueabihf/-/oxide-linux-arm-gnueabihf-4.0.14.tgz#23dfed7a7f6f6734cd676b7345e7a68041be382b"
-  integrity sha512-cSeLNWWqIWeSTmBntQvyY2/2gcLX8rkPFfDDTQVF8qbRcRMVPLxBvFVJyfSAYRNch6ZyVH2GI6dtgALOBDpdNA==
+"@tailwindcss/oxide-linux-arm-gnueabihf@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-arm-gnueabihf/-/oxide-linux-arm-gnueabihf-4.0.16.tgz#b4a4dabfa7797b7ffdd63a0a01406b0303dd5b8d"
+  integrity sha512-XBRXyUUyjMg5UMiyuQxJqWSs27w0V49g1iPuhrFakmu1/idDSly59XYteRrI2onoS9AzmMwfyzdiQSJXM89+PQ==
 
-"@tailwindcss/oxide-linux-arm64-gnu@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-arm64-gnu/-/oxide-linux-arm64-gnu-4.0.14.tgz#a310ef6d3f7ddb6df5b87775a3c55c51369c3296"
-  integrity sha512-bwDWLBalXFMDItcSXzFk6y7QKvj6oFlaY9vM+agTlwFL1n1OhDHYLZkSjaYsh6KCeG0VB0r7H8PUJVOM1LRZyg==
+"@tailwindcss/oxide-linux-arm64-gnu@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-arm64-gnu/-/oxide-linux-arm64-gnu-4.0.16.tgz#a7126c3a09163f83dd14c3595bfb2efcf42c3cbc"
+  integrity sha512-+bL1zkU8MDzv389OqyI0SJbrG9kGsdxf+k2ZAILlw1TPWg5oeMkwoqgaQRqGwpOHz0pycT94qIgWVNJavAz+Iw==
 
-"@tailwindcss/oxide-linux-arm64-musl@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-arm64-musl/-/oxide-linux-arm64-musl-4.0.14.tgz#4732cbcf05e55119002c2a29fe62b22023262ece"
-  integrity sha512-gVkJdnR/L6iIcGYXx64HGJRmlme2FGr/aZH0W6u4A3RgPMAb+6ELRLi+UBiH83RXBm9vwCfkIC/q8T51h8vUJQ==
+"@tailwindcss/oxide-linux-arm64-musl@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-arm64-musl/-/oxide-linux-arm64-musl-4.0.16.tgz#0b9ab0684d15501b4f72f0f45ee248a40db6f3db"
+  integrity sha512-Uqfnyx9oFxoX+/iy9pIDTADHLLNwuZNB8QSp+BwKAhtHjBTTYmDAdxKy3u8lJZve1aOd+S145eWpn3tT08cm4w==
 
-"@tailwindcss/oxide-linux-x64-gnu@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-x64-gnu/-/oxide-linux-x64-gnu-4.0.14.tgz#432ebdc0d6d9be1b1cdf7cc9c6a422fc6c8d4f85"
-  integrity sha512-EE+EQ+c6tTpzsg+LGO1uuusjXxYx0Q00JE5ubcIGfsogSKth8n8i2BcS2wYTQe4jXGs+BQs35l78BIPzgwLddw==
+"@tailwindcss/oxide-linux-x64-gnu@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-x64-gnu/-/oxide-linux-x64-gnu-4.0.16.tgz#37b8f8a445cdb867b9633e6192302bcd022d0899"
+  integrity sha512-v0Hx0KD94F6FG0IW3AJyCzQepSv/47xhShCgiWJ2TNVu406VtREkGpJtxS0Gu1ecSXhgn/36LToU5kivAuQiPg==
 
-"@tailwindcss/oxide-linux-x64-musl@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-x64-musl/-/oxide-linux-x64-musl-4.0.14.tgz#041a872f534f5d0484dc39cf28ddbdbcc25b857b"
-  integrity sha512-KCCOzo+L6XPT0oUp2Jwh233ETRQ/F6cwUnMnR0FvMUCbkDAzHbcyOgpfuAtRa5HD0WbTbH4pVD+S0pn1EhNfbw==
+"@tailwindcss/oxide-linux-x64-musl@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-linux-x64-musl/-/oxide-linux-x64-musl-4.0.16.tgz#91a5ef03906c439910390e829106ebe6fa62ca4c"
+  integrity sha512-CjV6hhQAVNYw6W2EXp1ZVL81CTSBEh6nTmS5EZq5rdEhqOx8G8YQtFKjcCJiojsS+vMXt9r87gGoORJcHOA0lg==
 
-"@tailwindcss/oxide-win32-arm64-msvc@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-win32-arm64-msvc/-/oxide-win32-arm64-msvc-4.0.14.tgz#8867b3b0d61ca6e775e4a217a27da3fbe1c9620d"
-  integrity sha512-AHObFiFL9lNYcm3tZSPqa/cHGpM5wOrNmM2uOMoKppp+0Hom5uuyRh0QkOp7jftsHZdrZUpmoz0Mp6vhh2XtUg==
+"@tailwindcss/oxide-win32-arm64-msvc@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-win32-arm64-msvc/-/oxide-win32-arm64-msvc-4.0.16.tgz#de183bc9767d783273fdf7a7c75f212616ceef78"
+  integrity sha512-Pj9eaAtXYH7NrvVx8Jx0U/sEaNpcIbb8d+2WnC8a+xL0LfIXWsu4AyeRUeTeb8Ty4fTGhKSJTohdXj1iSdN9WQ==
 
-"@tailwindcss/oxide-win32-x64-msvc@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-win32-x64-msvc/-/oxide-win32-x64-msvc-4.0.14.tgz#49e625d84cc5979ac490cbe3dfdbdfe080f95f9c"
-  integrity sha512-rNXXMDJfCJLw/ZaFTOLOHoGULxyXfh2iXTGiChFiYTSgKBKQHIGEpV0yn5N25WGzJJ+VBnRjHzlmDqRV+d//oQ==
+"@tailwindcss/oxide-win32-x64-msvc@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide-win32-x64-msvc/-/oxide-win32-x64-msvc-4.0.16.tgz#05f6dcf7ca9721540537dc1a1ecfedc72cb2deb0"
+  integrity sha512-M35hoFrhJe+1QdSiZpn85y8K7tfEVw6lswv3TjIfJ44JiPjPzZ4URg+rsTjTq0kue6NjNCbbY99AsRSSpJZxOw==
 
-"@tailwindcss/oxide@4.0.14":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide/-/oxide-4.0.14.tgz#6dc19e336b84a1a885349612c0b46ab7c9834cae"
-  integrity sha512-M8VCNyO/NBi5vJ2cRcI9u8w7Si+i76a7o1vveoGtbbjpEYJZYiyc7f2VGps/DqawO56l3tImIbq2OT/533jcrA==
+"@tailwindcss/oxide@4.0.16":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/oxide/-/oxide-4.0.16.tgz#9add201acdf07246bf5e54389110387985bed83e"
+  integrity sha512-n++F8Rzvo/e+FYxikZgKW4sCRXneSstLhTI91Ay9toeRcE/+WO33SQWzGtgmjWJcTupXZreskJ8FCr9b+kdXew==
   optionalDependencies:
-    "@tailwindcss/oxide-android-arm64" "4.0.14"
-    "@tailwindcss/oxide-darwin-arm64" "4.0.14"
-    "@tailwindcss/oxide-darwin-x64" "4.0.14"
-    "@tailwindcss/oxide-freebsd-x64" "4.0.14"
-    "@tailwindcss/oxide-linux-arm-gnueabihf" "4.0.14"
-    "@tailwindcss/oxide-linux-arm64-gnu" "4.0.14"
-    "@tailwindcss/oxide-linux-arm64-musl" "4.0.14"
-    "@tailwindcss/oxide-linux-x64-gnu" "4.0.14"
-    "@tailwindcss/oxide-linux-x64-musl" "4.0.14"
-    "@tailwindcss/oxide-win32-arm64-msvc" "4.0.14"
-    "@tailwindcss/oxide-win32-x64-msvc" "4.0.14"
+    "@tailwindcss/oxide-android-arm64" "4.0.16"
+    "@tailwindcss/oxide-darwin-arm64" "4.0.16"
+    "@tailwindcss/oxide-darwin-x64" "4.0.16"
+    "@tailwindcss/oxide-freebsd-x64" "4.0.16"
+    "@tailwindcss/oxide-linux-arm-gnueabihf" "4.0.16"
+    "@tailwindcss/oxide-linux-arm64-gnu" "4.0.16"
+    "@tailwindcss/oxide-linux-arm64-musl" "4.0.16"
+    "@tailwindcss/oxide-linux-x64-gnu" "4.0.16"
+    "@tailwindcss/oxide-linux-x64-musl" "4.0.16"
+    "@tailwindcss/oxide-win32-arm64-msvc" "4.0.16"
+    "@tailwindcss/oxide-win32-x64-msvc" "4.0.16"
 
-"@tailwindcss/postcss@^4.0.13":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/postcss/-/postcss-4.0.14.tgz#ce571535f3959103135b7edda4f3c7a6be26a666"
-  integrity sha512-+uIR6KtKhla1XeIanF27KtrfYy+PX+R679v5LxbkmEZlhQe3g8rk+wKj7Xgt++rWGRuFLGMXY80Ek8JNn+kN/g==
+"@tailwindcss/postcss@^4.0.15":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/postcss/-/postcss-4.0.16.tgz#6f4f32bb7ae521bc1f7bf47fc0900adfadacee21"
+  integrity sha512-wgNRdylwhUk04T27Mlpi4fB4adPxChbqrqKhvYFJmYP+zW4Ren+PwYoUcns0xlbjolcjQuAG+GZHRQAfF7LOCg==
   dependencies:
     "@alloc/quick-lru" "^5.2.0"
-    "@tailwindcss/node" "4.0.14"
-    "@tailwindcss/oxide" "4.0.14"
+    "@tailwindcss/node" "4.0.16"
+    "@tailwindcss/oxide" "4.0.16"
     lightningcss "1.29.2"
     postcss "^8.4.41"
-    tailwindcss "4.0.14"
+    tailwindcss "4.0.16"
 
-"@tailwindcss/vite@^4.0.13":
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/vite/-/vite-4.0.14.tgz#9d02b8925ce6eab307494d05e024566be0c205dd"
-  integrity sha512-y69ztPTRFy+13EPS/7dEFVl7q2Goh1pQueVO8IfGeyqSpcx/joNJXFk0lLhMgUbF0VFJotwRSb9ZY7Xoq3r26Q==
+"@tailwindcss/vite@^4.0.15":
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/vite/-/vite-4.0.16.tgz#f17f1b9eaca7ad150775975a9c2959663b754b56"
+  integrity sha512-6mZVWhAyjVNMMRw0Pvv2RZfTttjsAClU8HouLNZbeLbX0yURMa0UYEY/qS4dB1tZlRpiDBnCLsGsWbxEyIjW6A==
   dependencies:
-    "@tailwindcss/node" "4.0.14"
-    "@tailwindcss/oxide" "4.0.14"
+    "@tailwindcss/node" "4.0.16"
+    "@tailwindcss/oxide" "4.0.16"
     lightningcss "1.29.2"
-    tailwindcss "4.0.14"
+    tailwindcss "4.0.16"
 
 "@tanstack/table-core@8.21.2":
   version "8.21.2"
@@ -2165,7 +2170,7 @@
     "@typescript-eslint/types" "8.26.1"
     eslint-visitor-keys "^4.2.0"
 
-"@unhead/vue@^2.0.0-rc.10", "@unhead/vue@^2.0.0-rc.13":
+"@unhead/vue@^2.0.0-rc.13":
   version "2.0.0-rc.13"
   resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-2.0.0-rc.13.tgz#2a7a874f37eedc064391518f48768572714f4f79"
   integrity sha512-9jF2Y85HtEdxfaa6Y4wn2Gh1eXJHVNvvecWs3+qfEV83kSOFFowOpm6nIYmNpVGPQtnS0OW1JeIZjQEPZR+LAQ==
@@ -3614,18 +3619,18 @@ eslint-visitor-keys@^4.2.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-4.2.0.tgz#687bacb2af884fcdda8a6e7d65c606f46a14cd45"
   integrity sha512-UyLnSehNt62FFhSwjZlHmeokpRK59rcz29j+F1/aDgbkbRTk7wIc9XzdoasMUbRNKDM0qQt/+BJ4BrpFeABemw==
 
-eslint@^9.22.0:
-  version "9.22.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-9.22.0.tgz#0760043809fbf836f582140345233984d613c552"
-  integrity sha512-9V/QURhsRN40xuHXWjV64yvrzMjcz7ZyNoF2jJFmy9j/SLk0u1OLSZgXi28MrXjymnjEGSR80WCdab3RGMDveQ==
+eslint@^9.23.0:
+  version "9.23.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-9.23.0.tgz#b88f3ab6dc83bcb927fdb54407c69ffe5f2441a6"
+  integrity sha512-jV7AbNoFPAY1EkFYpLq5bslU9NLNO8xnEeQXwErNibVryjk67wHVmddTBilc5srIttJDBrB0eMHKZBFbSIABCw==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.12.1"
     "@eslint/config-array" "^0.19.2"
-    "@eslint/config-helpers" "^0.1.0"
+    "@eslint/config-helpers" "^0.2.0"
     "@eslint/core" "^0.12.0"
-    "@eslint/eslintrc" "^3.3.0"
-    "@eslint/js" "9.22.0"
+    "@eslint/eslintrc" "^3.3.1"
+    "@eslint/js" "9.23.0"
     "@eslint/plugin-kit" "^0.2.7"
     "@humanfs/node" "^0.16.6"
     "@humanwhocodes/module-importer" "^1.0.1"
@@ -5863,7 +5868,7 @@ regjsparser@^0.12.0:
   dependencies:
     jsesc "~3.0.2"
 
-reka-ui@^2.0.0, reka-ui@^2.0.2:
+reka-ui@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/reka-ui/-/reka-ui-2.0.2.tgz#1a1991d24f9a346b70b268f8e4ae87ac3a511ff3"
   integrity sha512-pC2UF6Z+kJF96aJvIErhkSO4DJYIeq9pgvh3pntNqcZb3zFGMzw8h2uny+GnLX2CKiQV54kZNYXxecYIiPMGyg==
@@ -5878,6 +5883,22 @@ reka-ui@^2.0.0, reka-ui@^2.0.2:
     aria-hidden "^1.2.4"
     defu "^6.1.4"
     ohash "^1.1.4"
+
+reka-ui@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/reka-ui/-/reka-ui-2.1.1.tgz#7534e1831dc74a0570a0c1223dfb7dced9fa339b"
+  integrity sha512-awvpQ041LPXAvf2uRVFwedsyz9SwsuoWlRql1fg4XimUCxEI2GOfHo6FIdL44dSPb/eG/gWbdGhoGHLlbX5gPA==
+  dependencies:
+    "@floating-ui/dom" "^1.6.13"
+    "@floating-ui/vue" "^1.1.6"
+    "@internationalized/date" "^3.5.0"
+    "@internationalized/number" "^3.5.0"
+    "@tanstack/vue-virtual" "^3.12.0"
+    "@vueuse/core" "^12.5.0"
+    "@vueuse/shared" "^12.5.0"
+    aria-hidden "^1.2.4"
+    defu "^6.1.4"
+    ohash "^2.0.11"
 
 require-directory@^2.1.1:
   version "2.1.1"
@@ -6402,10 +6423,10 @@ tailwind-variants@^1.0.0:
   dependencies:
     tailwind-merge "3.0.2"
 
-tailwindcss@4.0.14, tailwindcss@^4.0.13:
-  version "4.0.14"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-4.0.14.tgz#531548524eb422fb8b89a24ebdf267c6726a09c6"
-  integrity sha512-92YT2dpt671tFiHH/e1ok9D987N9fHD5VWoly1CdPD/Cd1HMglvZwP3nx2yTj2lbXDAHt8QssZkxTLCCTNL+xw==
+tailwindcss@4.0.16, tailwindcss@^4.0.15:
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-4.0.16.tgz#c6551e4ea882895e33994c1ebd064929bdd6bb32"
+  integrity sha512-i/SbG7ThTIcLshcFJL+je7hCv9dPis4Xl4XNeel6iZNX42pp/BZ+la+SbZIPoYE+PN8zhKbnHblpQ/lhOWwIeQ==
 
 tapable@^2.2.0:
   version "2.2.1"
@@ -6792,10 +6813,10 @@ validate-npm-package-license@^3.0.4:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vaul-vue@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/vaul-vue/-/vaul-vue-0.3.0.tgz#b952a908f622d9c4f27f95bbe17dded6342cc096"
-  integrity sha512-LwhBd7xLJtbdhq+vnQk9etOjZxr09GNFtMjOEYh969y5f8JKV5oR30CfB4toPkbtVMxFAFhMrp77EVWQgbtpHA==
+vaul-vue@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/vaul-vue/-/vaul-vue-0.4.1.tgz#76ad8ccf8f9a61ea89ae51874defd3e36a5cef6d"
+  integrity sha512-A6jOWOZX5yvyo1qMn7IveoWN91mJI5L3BUKsIwkg6qrTGgHs1Sb1JF/vyLJgnbN1rH4OOOxFbtqL9A46bOyGUQ==
   dependencies:
     "@vueuse/core" "^10.8.0"
     reka-ui "^2.0.0"
